@@ -1,4 +1,4 @@
-name: Creat ".env" file in the root directory and add the following code
+name: info
 
 on: 
     push:
