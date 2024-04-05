@@ -20,6 +20,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Creat .env file
         run: |
+          echo "Creating .env file"
+          echo file".env"
           touch .env
           echo "APP_API_KEY=${{secrets.APIS_KEYS}}" >> .env
           cat .env
