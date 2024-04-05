@@ -4,15 +4,7 @@ on:
     push:
         branches: ["main"]
     pull_request:
-        branches: ["main"]
-    workflow_dispatch:
-      inputs:
-        APIS_KEYS:
-          description: 'API keys'
-          required: true
-          default: 'default'
-    
-
+        branches: ["main"]   
 
 jobs:
   build:
