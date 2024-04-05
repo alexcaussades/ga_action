@@ -20,6 +20,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Creat .env file
         run: |
-          echo "API_KEY=${{ github.event.inputs.parameter }}" >> .env
+          echo "Creating .env file"
+          echo file".env"
+          echo "APP_API_KEY=${{secrets.APIS_KEYS}}" > .env
+          cat .env
       - name: Deploy
         run: echo "Deploying!"
