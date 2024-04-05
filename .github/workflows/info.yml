@@ -18,16 +18,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Node.js
-        shell: pwsh
-        run: echo "Setting up Node.js"
       - name: Creat .env file
         shell: pwsh
         run: |
           echo "Creating .env file"
           echo file".env"
-          new-item .env
-          echo "APP_API_KEY=${{secrets.APIS_KEYS}}" > .env
-          cat .env
+          new-item -path . -name .env -value "APP_API_KEY = ${{secrets.APIS_KEYS}}"
       - name: Deploy
         run: echo "Deploying!"
