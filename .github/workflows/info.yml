@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "Creating .env file"
           echo file".env"
-          mkdir .env && cd .env
+          new-item .env
           echo "APP_API_KEY=${{secrets.APIS_KEYS}}" > .env
           cat .env
       - name: Deploy
