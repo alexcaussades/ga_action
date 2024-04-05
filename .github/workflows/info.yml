@@ -1,0 +1,22 @@
+name: Creat ".env" file in the root directory and add the following code
+
+on: 
+    push:
+        branches: ["master"]
+    pull_request:
+        branches: ["master"]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Creat .env file
+        run: |
+          touch .env
+          echo "APP_API_KEY=${{secrets.APIS_KEYS}}" >> .env
+          cat .env
+      - name: Deploy
+        run: echo "Deploying!"
