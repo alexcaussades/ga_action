@@ -1,0 +1,18 @@
+name: Creat ".env" file in the root directory and add the following code
+
+on: 
+    push:
+        branches: ["master"]
+    pull_request:
+        branches: ["master"]
+
+jobs:
+
+    - name: build and deploy
+    run: |
+        touch .env
+        echo "APP_API_KEY=${{secret.APIS_KEYS}}" >> .env
+        cat .env
+
+
+
