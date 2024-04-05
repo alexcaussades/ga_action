@@ -2,9 +2,9 @@ name: Creat ".env" file in the root directory and add the following code
 
 on: 
     push:
-        branches: ["master"]
+        branches: ["main"]
     pull_request:
-        branches: ["master"]
+        branches: ["main"]
 
 
 jobs:
