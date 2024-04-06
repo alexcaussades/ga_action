@@ -4,19 +4,20 @@ on:
     workflow_dispatch:
     
 
-# crée un fichier avec le contenu de la variable d'environnement API_KEY en ".env"
+# crée un fichier avec le contenu de la variable d'environnement API_KEY en ".env" sur vscode avec la commande echo
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-            - name: Create .env file
-              run: echo "API_KEY=${{ secrets.APIS_KEYS }}" > .env
-
-            - name: Install dependencies
-              run: |
-                composer install
-            - name: Run tests
-              run: |
-                vendor/bin/phpunit
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install dependencies
+      run: npm install
+    - name: Create .env file
+      run: echo "API_KEY=${{ secrets.APIS_KEYS }}" > .env
+    - name: Run tests
+      run: npm test
