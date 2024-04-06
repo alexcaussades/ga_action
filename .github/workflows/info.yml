@@ -9,13 +9,9 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Creat .env file
-        shell: pwsh
-        run: |
-          echo "Creating .env file"
-          echo file".env"
-          new-item -path ${{env}} -name .env -value "APP_API_KEY = ${{secrets.APIS_KEYS}}"
-      - name: Deploy
-        run: echo "Deploying!"
+      # crée un fichier avec le contenu de la variable d'environnement API_KEY en ".env"
+      - name: Create .env file
+        run: echo "API_KEY=${{ secrets.API_KEY }}" > .env
+      # affiche le contenu du fichier ".env"
+      - name: Show .env file
+        run: type .env
