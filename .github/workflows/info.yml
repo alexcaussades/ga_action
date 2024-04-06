@@ -10,8 +10,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Create .env file
               run: echo "API_KEY=${{ secrets.APIS_KEYS }}" > .env
-            - name: Run script
-              run: python script.py
+
+            - name: Install dependencies
+              run: |
+                composer install
+            - name: Run tests
+              run: |
+                vendor/bin/phpunit
