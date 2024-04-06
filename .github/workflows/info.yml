@@ -4,14 +4,14 @@ on:
     workflow_dispatch:
     
 
-
+# crée un fichier avec le contenu de la variable d'environnement API_KEY en ".env"
 jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-      # crée un fichier avec le contenu de la variable d'environnement API_KEY en ".env"
-      - name: Create .env file
-        run: echo "API_KEY=${{secrets.APIS_KEYS}}" > .env
-      # affiche le contenu du fichier ".env"
-      - name: Show .env file
-        run: type .env
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+            - name: Create .env file
+              run: echo "API_KEY=${{ secrets.APIS_KEYS }}" > .env
+            - name: Run script
+              run: python script.py
