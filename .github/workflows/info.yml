@@ -7,14 +7,21 @@ on:
 
 permissions: read-all
 
+# Environnement local pour les secrets.
+
+
+env:
+  APIS_KEYS: ${{ secrets.APIS_KEYS }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.APIS_KEYS }}
-        publish_dir: ./build
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: create .env file
+        run: echo ${{ secrets.APIS_KEYS }} > .env
+
+
