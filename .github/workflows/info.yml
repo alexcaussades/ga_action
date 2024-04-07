@@ -16,7 +16,7 @@ jobs:
 
       - name: Configurer les secrets
         env:
-          MY_SECRET: ${{secrets.APIS_KEYS}}
+          MY_SECRET: ${{ secrets.APIS_KEYS }}
         run: echo "API_KEYS = $MY_SECRET" > .env
 
       - name: Exécuter votre tâche
