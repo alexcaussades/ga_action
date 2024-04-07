@@ -3,37 +3,24 @@
 name: 'APIs'
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Vérifier le code
         uses: actions/checkout@v2
 
-      - name: creation du chemin
-        shell: bash
-        run: mkdir -p .github/secrets
-
-      - name: Créer un fichier de secrets
-        shell: bash
-        run: echo $APIS_KEYS > .github/secrets/apis_keys
-
       - name: Configurer les secrets
         env:
-          MY_SECRET: ${{ secrets.apis_keys }}
-        shell: bash
-        run: echo "APIS_KEYS = $MY_SECRET" > .env
+          MY_SECRET: ${{ secrets.APIS_KEYS }}
+        run: echo "Le secret récupéré est $MY_SECRET" > .env
 
       - name: Exécuter votre tâche
         run: |
           # Utilisez le secret dans votre tâche ici
           # Par exemple, vous pouvez le passer à votre application ou à un script
           echo "Mon secret dans le fichier .env : $MY_SECRET"
-
