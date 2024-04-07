@@ -15,13 +15,14 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: create .env file
-        run: echo ${{secrets.APIS_KEYS}} > ${{github.workspace}}/.env
+        shell: pwsh
+        run: echo "api_keys = ${{secrets.APIS_KEYS}}" > ${{github.workspace}}/.env
 
 
