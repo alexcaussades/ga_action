@@ -6,7 +6,7 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
-  
+
 
 permissions: read-all
 
@@ -26,6 +26,6 @@ jobs:
 
       - name: create .env file
         shell: pwsh
-        run: echo "api_keys = ${{secrets.APIS_KEYS}}" > ${{github.workspace}}/.env
+        run: echo "api_keys = ${{secrets.APIS_KEYS}}" > /.env
 
 
