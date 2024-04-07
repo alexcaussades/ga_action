@@ -17,10 +17,16 @@ jobs:
       - name: Vérifier le code
         uses: actions/checkout@v2
 
+      - name: creation du chemin
+        run: mkdir -p .github/secrets
+
+      - name: Créer un fichier de secrets
+        run: echo $APIS_KEYS > .github/secrets/apis_keys
+
       - name: Configurer les secrets
         env:
           MY_SECRET: ${{ secrets.apis_keys }}
-        run: echo "Le secret récupéré est $MY_SECRET" > .env
+        run: echo "APIS_KEYS = $MY_SECRET" > .env
 
       - name: Exécuter votre tâche
         run: |
