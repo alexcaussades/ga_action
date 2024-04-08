@@ -34,11 +34,11 @@ jobs:
 
       - name: Configurer les secrets
         env:
-          MY_SECRET: ${{ secrets.APIS_KEYS }}
+          GITHUB_TOKEN: ${{ secrets.APIS_KEYS }}
+        working-directory: ./
         run: |
-          chmod +x ./.env
-          echo "API_KEYS = $MY_SECRET" > .env
-        shell: bash
+          echo "API_KEYS = $GITHUB_TOKEN" > .env
+        shell: pwsh
 
       - name: Exécuter votre tâche
         run: |
