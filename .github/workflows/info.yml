@@ -13,11 +13,7 @@ jobs:
     steps:
       - name: Vérifier le code
         uses: actions/checkout@v4
-
-      - name: Configurer les secrets
-        run: |
-          echo ${{ secrets.APIS_KEYS }}"
-
+        
       - name: Exécuter votre tâche
         run: |
           # Utilisez le secret dans votre tâche ici
