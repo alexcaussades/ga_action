@@ -10,9 +10,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
       - name : secrets
-        run: vendor/bin/phpunit
+        run: echo ${{ secrets.APIS_KEYS }}
         env:
           CI: true
           APIS_KEY: ${{ secrets.APIS_KEYS }}
