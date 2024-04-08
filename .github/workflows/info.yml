@@ -16,24 +16,6 @@ jobs:
 
       - name: Configurer les secrets
         env:
-          MY_SECRET: "hello"
-        run: echo "API_KEYS = $MY_SECRET" > .env
-
-      - name: Exécuter votre tâche
-        run: |
-          # Utilisez le secret dans votre tâche ici
-          # Par exemple, vous pouvez le passer à votre application ou à un script
-          echo "Mon secret dans le fichier .env : $MY_SECRET"
-
-  top-secret:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Vérifier le code
-        uses: actions/checkout@v4
-
-      - name: Configurer les secrets
-        env:
           GITHUB_TOKEN: ${{ secrets.APIS_KEYS }}
         working-directory: ./.env
         run: |
@@ -45,3 +27,23 @@ jobs:
           # Utilisez le secret dans votre tâche ici
           # Par exemple, vous pouvez le passer à votre application ou à un script
           echo "Mon secret dans le fichier .env : $MY_SECRET"
+
+# executez le workflow en cliquant sur le bouton "Run workflow" dans l'onglet "Actions" de votre dépôt
+
+# executez le fichier info.yml avec la commande suivante
+# git add .github/workflows/info.yml
+# git commit -m "Add info.yml"
+# git push
+
+# vérifiez que le fichier .env a bien été créé dans votre dépôt
+
+# pour voir le secret, cliquez sur le nom du workflow dans l'onglet "Actions" de votre dépôt
+# cliquez sur le nom de la tâche "Configurer les secrets"
+# cliquez sur "Run" pour voir le secret
+
+# executez le fichier python le workflow en cliquant sur le bouton "Run workflow" dans l'onglet "Actions" de votre dépôt
+
+      - name: Exécuter le script python
+        run: |
+          python3 main.py
+        shell: bash
