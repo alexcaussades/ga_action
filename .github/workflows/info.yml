@@ -3,7 +3,7 @@
 name: 'APIs'
 
 on:
-  workflow_dispatch:
+  workflow_dispatch
     
 
 jobs:
@@ -17,6 +17,24 @@ jobs:
       - name: Configurer les secrets
         env:
           MY_SECRET: "hello"
+        run: echo "API_KEYS = $MY_SECRET" > .env
+
+      - name: Exécuter votre tâche
+        run: |
+          # Utilisez le secret dans votre tâche ici
+          # Par exemple, vous pouvez le passer à votre application ou à un script
+          echo "Mon secret dans le fichier .env : $MY_SECRET"
+
+  top-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Vérifier le code
+        uses: actions/checkout@v4
+
+      - name: Configurer les secrets
+        env:
+          MY_SECRET: ${{ secrets.APIS_KEYS }}
         run: echo "API_KEYS = $MY_SECRET" > .env
 
       - name: Exécuter votre tâche
