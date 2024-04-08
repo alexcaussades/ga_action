@@ -20,7 +20,7 @@ jobs:
 
       - name: Déployer
         run: |
-          php artisan deploy
+          php artisan serve
         shell: bash
 
         
