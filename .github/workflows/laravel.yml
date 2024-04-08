@@ -1,7 +1,20 @@
 name: laravel
 
 on:
-  workflow_dispatch
+  push:
+    branches: ["master"]
+  
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 
 jobs:
