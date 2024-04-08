@@ -1,0 +1,31 @@
+name: laravel
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Vérifier le code
+        uses: actions/checkout@v4
+
+      - name: Installer les dépendances
+        run: |
+          composer install
+        shell: bash
+
+      - name: Exécuter les tests
+        run: |
+          php artisan test
+        shell: bash
+
+      - name: Déployer
+        run: |
+          php artisan deploy
+        shell: bash
+
+        
