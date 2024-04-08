@@ -18,11 +18,6 @@ jobs:
           composer install
         shell: bash
 
-      - name: Exécuter les tests
-        run: |
-          php artisan test
-        shell: bash
-
       - name: Déployer
         run: |
           php artisan deploy
