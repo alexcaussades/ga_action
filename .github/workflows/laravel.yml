@@ -17,17 +17,7 @@ jobs:
           CI: true
           APIS_KEY: ${{ secrets.APIS_KEYS }}
 
-      - name: Vérifier le code
-        uses: actions/checkout@v4
-
-      - name: Installer les dépendances
-        run: |
-          composer install
-        shell: bash
-
-      - name: Déployer
-        run: |
-          php artisan serve
-        shell: bash
+      - name: updtate composer
+        run: composer update
 
         
