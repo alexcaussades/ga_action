@@ -15,12 +15,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configurer les secrets
-        env:
-          GITHUB_TOKEN: ${{ secrets.APIS_KEYS }}
-        working-directory: ./.env
         run: |
-          echo "API_KEYS = ${{ secrets.APIS_KEYS }}" > .env
-        shell: pwsh
+          echo ${{ secrets.APIS_KEYS }}"
 
       - name: Exécuter votre tâche
         run: |
