@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name : secrets
+        run: vendor/bin/phpunit
+        env:
+          CI: true
+          APIS_KEY: ${{ secrets.APIS_KEYS }}
+
       - name: Vérifier le code
         uses: actions/checkout@v4
 
