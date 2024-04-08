@@ -19,7 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.APIS_KEYS }}
         working-directory: ./.env
         run: |
-          echo "API_KEYS = $GITHUB_TOKEN" > .env
+          echo "API_KEYS = ${{ secrets.APIS_KEYS }}" > .env
         shell: pwsh
 
       - name: Exécuter votre tâche
