@@ -35,7 +35,7 @@ jobs:
       - name: Configurer les secrets
         env:
           GITHUB_TOKEN: ${{ secrets.APIS_KEYS }}
-        working-directory: ./
+        working-directory: ./.env
         run: |
           echo "API_KEYS = $GITHUB_TOKEN" > .env
         shell: pwsh
