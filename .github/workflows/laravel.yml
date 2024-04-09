@@ -37,15 +37,12 @@ jobs:
         run: composer update
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
         
       - name: Install NPM dependencies
         run: npm install
-
-      - name: Build assets
-        run: npm run dev
 
 
   deploy:
@@ -60,7 +57,7 @@ jobs:
       run:
         working-directory: ./public/index.php
 
-        
+
 
 
         
