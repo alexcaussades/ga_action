@@ -24,11 +24,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+
       - name : secrets
-        run: echo ${{ secrets.APIS_KEYS }}
         env:
           CI: true
           APIS_KEY: ${{ secrets.APIS_KEYS }}
+        run: echo $APIS_KEY > .env
 
       - name: updtate composer
         run: composer update
