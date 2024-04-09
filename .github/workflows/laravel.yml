@@ -44,7 +44,6 @@ jobs:
 
       - name: updtate composer
         working-directory: ./
-        shell: pwsh
         run: composer update
 
         
