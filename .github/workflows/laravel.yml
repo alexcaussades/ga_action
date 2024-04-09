@@ -33,6 +33,34 @@ jobs:
         run: echo $APIS_KEY > .env
 
       - name: updtate composer
+        shell: bash
         run: composer update
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+        
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Build assets
+        run: npm run dev
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+
+    defaults:
+      run:
+        working-directory: ./public/index.php
+
+        
+
 
         
