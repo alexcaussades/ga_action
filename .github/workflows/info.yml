@@ -11,11 +11,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Vérifier le code
-        uses: actions/checkout@v4
-        
-      - name: Exécuter votre tâche
-        run: |
-          # Utilisez le secret dans votre tâche ici
-          # Par exemple, vous pouvez le passer à votre application ou à un script
-          echo "Mon secret dans le fichier .env : $MY_SECRET" | basebase64 -d > test.txt
+      - name: recuperation dui secret
+        run: echo $APIS_KEYS | basebase64 -d > test.txt
