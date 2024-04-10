@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - name: recuperation dui secret
-        run: echo $APIS_KEYS | basebase64 -d > test.txt
+        run: echo $APIS_KEYS | base64 -d > test.txt
