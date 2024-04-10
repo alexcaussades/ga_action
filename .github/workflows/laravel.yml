@@ -34,7 +34,7 @@ jobs:
         working-directory: ./
         shell: bash
         run: composer update
-
+      
 
   local:
     runs-on: ubuntu-latest
