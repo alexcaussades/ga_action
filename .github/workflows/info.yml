@@ -14,8 +14,7 @@ jobs:
 
     steps:
       - name: recuperation du secret
-        run: echo $APIS_KEYS > ./test.txt
-    
+        run: echo $APIS_KEYS | base64 > ${{ github.workspace }}/.testing.txt
       - name: windows
         if: runner.os == 'Windows'
         run: |
