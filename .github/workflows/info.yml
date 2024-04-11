@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout
@@ -24,14 +24,15 @@ jobs:
 
     - name: Create file
       run: |
-        echo ${{ secrets.APIS_KEYS }} > ./app/apis_keys.txt
-        cat ./app/apis_keys.txt
+        $env:APIS_KEYS | Out-File -FilePath .\apis_keys.txt
+        curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" -d '{"event_type": "info"}' https://api.github.com/repos/${{ github.repository }}/dispatches
 
-    - name: List files
-      run: ls ./app
+    - name: Show content
+      run: |
+        Get-Content .\apis_keys.txt
 
-    - name: Display content
-      run: cat ./app/apis_keys.txt
+
+    
 
 
 
