@@ -19,9 +19,9 @@ jobs:
     steps:
     - name: secret on local directory client # Create a secret on the local directory from windows
       shell: pwsh
-      working-directory: client
       env:
         APIS_KEYS: ${{ secrets.APIS_KEYS }}
-      run: echo $APIS_KEYS | base64 --decode > /client/.env
+      run: |
+       "./" | Out-File -FilePath testing.txt -Encoding utf8 -Append
 
 
