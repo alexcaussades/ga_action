@@ -28,7 +28,6 @@ jobs:
         run: echo $APIS_KEYS | base64 > ${{ github.workspace }}/.testing.txt
       
       - name: windows
-        if: runner.os == 'Windows'
         shell: pwsh
         run: |
             $env:APIS_KEYS = Get-Content ${{ github.workspace }}/.testing.txt
