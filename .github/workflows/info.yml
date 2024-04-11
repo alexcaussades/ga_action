@@ -5,9 +5,6 @@ name: 'APIs'
 on:
   workflow_dispatch
   
-env:
-  APIS_KEYS: "test"
-
 permissions:
   contents: read
   pages: write
