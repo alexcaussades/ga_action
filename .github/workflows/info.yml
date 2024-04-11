@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: recuperation dui secret
+      - name: recuperation du secret
         working-directory: /
-        run: echo $APIS_KEYS | base64 -d > test.txt
-
+        run: echo $APIS_KEYS > ./test.txt
+    
       - name: windows
         if: runner.os == 'Windows'
         working-directory: /
         run: |
           echo "Hello, Windows!"
-          echo $APIS_KEYS > .env
+          echo $APIS_KEYS > ./.env
           Get-Content .env
