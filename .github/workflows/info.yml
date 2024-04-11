@@ -39,4 +39,4 @@ jobs:
 
 defaults:
   run:
-    working-directory: /
+    working-directory: client
