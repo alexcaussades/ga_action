@@ -13,30 +13,17 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-      - name: recuperation du secret
-        run: echo $APIS_KEYS | base64 > ${{ github.workspace }}/.testing.txt
-      
-      - name: windows
-        shell: pwsh
-        run: |
-            $env:APIS_KEYS = Get-Content ${{ github.workspace }}/.testing.txt
-            echo $env:APIS_KEYS
-            echo $env:APIS_KEYS | base64 -d > ${{ github.workspace }}/.testing.txt
-            Get-Content ${{ github.workspace }}/.testing.txt
+    - name: secret on local directory client # Create a secret on the local directory from windows
+      shell: pwsh
+      working-directory: client
+      env:
+        APIS_KEYS: ${{ secrets.APIS_KEYS }}
+      run: echo $APIS_KEYS > /client/.env
 
-
-
-defaults:
-  run:
-    working-directory: client
