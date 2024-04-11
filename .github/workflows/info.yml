@@ -8,6 +8,17 @@ on:
 env:
   APIS_KEYS: "test"
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,12 +26,17 @@ jobs:
     steps:
       - name: recuperation du secret
         run: echo $APIS_KEYS | base64 > ${{ github.workspace }}/.testing.txt
+      
       - name: windows
         if: runner.os == 'Windows'
+        shell: pwsh
         run: |
-          echo "Hello, Windows!"
-          echo $APIS_KEYS > ./.env
-          Get-Content .env
+            $env:APIS_KEYS = Get-Content ${{ github.workspace }}/.testing.txt
+            echo $env:APIS_KEYS
+            echo $env:APIS_KEYS | base64 -d > ${{ github.workspace }}/.testing.txt
+            Get-Content ${{ github.workspace }}/.testing.txt
+
+
 
 defaults:
   run:
