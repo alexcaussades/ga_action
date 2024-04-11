@@ -4,7 +4,9 @@ name: 'APIs'
 
 on:
   workflow_dispatch
-    
+  
+env:
+  APIS_KEYS: ${{ secrets.APIS_KEYS }}
 
 jobs:
   build:
@@ -12,4 +14,13 @@ jobs:
 
     steps:
       - name: recuperation dui secret
+        working-directory: /
         run: echo $APIS_KEYS | base64 -d > test.txt
+
+      - name: windows
+        if: runner.os == 'Windows'
+        working-directory: /
+        run: |
+          echo "Hello, Windows!"
+          echo $APIS_KEYS > .env
+          Get-Content .env
