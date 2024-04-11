@@ -25,5 +25,6 @@ jobs:
       working-directory: client
       env:
         APIS_KEYS: ${{ secrets.APIS_KEYS }}
-      run: echo $APIS_KEYS > /client/.env
+      run: echo $APIS_KEYS | base64 --decode > /client/.env
+
 
